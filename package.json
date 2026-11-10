@@ -2,9 +2,11 @@
   "name": "assistant",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
+    "dev": "tsx watch --env-file-if-exists=.env src/index.ts",
     "build": "tsc",
-    "start": "node dist/index.js"
+    "start": "node --env-file-if-exists=.env dist/index.js",
+    "test": "node --test tests/telegram-webhook.test.mjs",
+    "webhook:set": "node --env-file-if-exists=.env scripts/set-webhook.mjs"
   },
   "dependencies": {
     "@hono/node-server": "^2.1.3",
